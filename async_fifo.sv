@@ -67,13 +67,16 @@ module async_fifo #(
      always_ff @(posedge wr_clk or negedge rst_n) begin
           if (!rst_n) begin
               w_ptr_bin    <= '0;
+              full         <= 1'b0;
           end
           else begin
               if (w_en && !full) begin
                 mem[w_ptr_bin[PTR_WIDTH-2:0]] <= data_in;
                 w_ptr_bin <= w_ptr_bin + 1'b1;
-		full <= full_next;
               end
+              // Update every cycle so full clears once the synchronized
+              // read pointer advances, not only on the next write.
+              full <= full_next;
           end
      end
 

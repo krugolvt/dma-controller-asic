@@ -127,6 +127,9 @@ module dma_fsm (
                 source_done = 1'b1;
             end
 
+            default: begin
+            end
+
         endcase
     end
 

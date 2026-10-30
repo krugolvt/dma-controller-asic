@@ -1,0 +1,8 @@
+`verilator_config
+
+// Pre-existing files whose names differ from the module they contain.
+// Renaming them would break the existing testbench/EDA flows, so waive the
+// style rule for exactly these files rather than globally.
+lint_off -rule DECLFILENAME -file "*axi4_lite.sv"
+lint_off -rule DECLFILENAME -file "*dma_fsm_wr.sv"
+lint_off -rule DECLFILENAME -file "*dma_fsm_rd.sv"

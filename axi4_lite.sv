@@ -68,6 +68,8 @@ module dma_axi_lite_regs (
                     5'h0C:
                         start <= s_axi_wdata[0];
 
+                    default: ;
+
                 endcase
 
                 s_axi_bvalid <= 1'b1;
